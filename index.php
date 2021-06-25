@@ -28,26 +28,28 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 	try{
 		if (preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", $email)) {
   			echo $email;
+
+
+
 $mail = new PHPMailer();
+
+// Settings
 $mail->IsSMTP();
 $mail->CharSet = 'UTF-8';
-$mail->Host       = "smtp.gmail.com";   
-$mail->SMTPDebug  = 3;                     
-$mail->SMTPAuth   = true;
-$mail->SMTPsecure = 'tls';
-$mail->Port       = 587;                   
-$mail->Username   = "masterrrx007@gmail.com";           
-$mail->Password   = "Cricket20201Phool2Maali";
-$mail->From = "masterrrx007@gmail.com";
-$mail->setFrom("masterrrx007@gmail.com");
-$mail->FromName = "Mohit Kumar";
+
+$mail->Host       = "smtp.gmail.com";    // SMTP server example
+$mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+$mail->SMTPAuth   = true;                  // enable SMTP authentication
+$mail->Port       = 587;                    // set the SMTP port for the GMAIL server
+$mail->Username   = "masterrrx007@gmail.com";            // SMTP account username example
+$mail->Password   = "Cricket20201Phool2Maali";            // SMTP account password example
 $mail->addAddress($email);
 $mail->addReplyTo("masterrrx007@gmail.com", "Reply");
-$mail->SMTPOptions=array('ssl'=>array(
-    'verify_peer'=>false,
-    'verify_peer_name'=>false,
-    'allow_self_signed'=>false
-    ));
+// Content
+$mail->isHTML(true);                       // Set email format to HTML
+$mail->Subject = 'Here is the subject';
+$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 $mail->isHTML(true);                       
 $mail->Subject = 'Confirmation of your Marvel comic subscription';
 $mail->Body    = 'Thankyou For Subscribing to: <b>Marvel Comics!!</b>';

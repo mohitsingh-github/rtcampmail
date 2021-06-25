@@ -38,7 +38,7 @@ $mail->IsSMTP();
 $mail->CharSet = 'UTF-8';
 
 $mail->Host       = "smtp.gmail.com";    // SMTP server example
-$mail->SMTPDebug  = 3;                     // enables SMTP debug information (for testing)
+$mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
 $mail->Username   = "masterrrx007@gmail.com";            // SMTP account username example
@@ -46,10 +46,6 @@ $mail->Password   = "Cricket20201Phool2Maali";            // SMTP account passwo
 $mail->addAddress($email);
 $mail->addReplyTo("masterrrx007@gmail.com", "Reply");
 // Content
-$mail->isHTML(true);                       // Set email format to HTML
-$mail->Subject = 'Here is the subject';
-$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 $mail->isHTML(true);                       
 $mail->Subject = 'Confirmation of your Marvel comic subscription';
 $mail->Body    = 'Thankyou For Subscribing to: <b>Marvel Comics!!</b>';

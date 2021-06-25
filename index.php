@@ -32,7 +32,7 @@ $mail = new PHPMailer();
 $mail->IsSMTP();
 $mail->CharSet = 'UTF-8';
 $mail->Host       = "smtp.gmail.com";   
-$mail->SMTPDebug  = 0;                     
+$mail->SMTPDebug  = 3;                     
 $mail->SMTPAuth   = true;
 $mail->SMTPsecure = 'tls';
 $mail->Port       = 587;                   

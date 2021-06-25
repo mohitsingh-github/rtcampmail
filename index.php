@@ -1,9 +1,9 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'Exception.php';
-require 'PHPMailer.php';
-require 'SMTP.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/Exception.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/PHPMailer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/SMTP.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 
 
 
-$mail = new PHPMailer();
+$mail = new PHPMailer;
 
 // Settings
 $mail->IsSMTP();
@@ -41,6 +41,7 @@ $mail->Host       = "smtp.gmail.com";    // SMTP server example
 $mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
+$mail->SMTPSecure = 'tls';
 $mail->Username   = "masterrrx007@gmail.com";            // SMTP account username example
 $mail->Password   = "rtcampprojectpass";            // SMTP account password example
 $mail->addAddress($email);
@@ -50,6 +51,13 @@ $mail->isHTML(true);
 $mail->Subject = 'Confirmation of your Marvel comic subscription';
 $mail->Body    = 'Thankyou For Subscribing to: <b>Marvel Comics!!</b>';
 $mail->AltBody = 'Thankyou For Subscribing to: Marvel Comics!';
+$mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
 try {
     $mail->send();
     echo "<br><br>Message has been sent successfully";

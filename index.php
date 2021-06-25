@@ -1,9 +1,9 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'src\Exception.php';
-require 'src\PHPMailer.php';
-require 'src\SMTP.php';
+require 'Exception.php';
+require 'PHPMailer.php';
+require 'SMTP.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +38,9 @@ $mail->SMTPsecure = 'tls';
 $mail->Port       = 587;                   
 $mail->Username   = "masterrrx007@gmail.com";           
 $mail->Password   = "Cricket20201Phool2Maali";
-$mail->FromName = "Mohit Kumar";
 $mail->From = "masterrrx007@gmail.com";
 $mail->setFrom("masterrrx007@gmail.com");
+$mail->FromName = "Mohit Kumar";
 $mail->addAddress($email);
 $mail->addReplyTo("masterrrx007@gmail.com", "Reply");
 $mail->SMTPOptions=array('ssl'=>array(
